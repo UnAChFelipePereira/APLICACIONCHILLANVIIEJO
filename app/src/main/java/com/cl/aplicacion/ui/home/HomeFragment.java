@@ -19,7 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap googleMap;
     private FragmentHomeBinding binding;
-
+    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment);
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -27,22 +27,16 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment);
         mapFragment.getMapAsync(this);
 
-        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+       ///HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+       /// final TextView textView = binding.;
+       /// homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         return root;
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
-    @Override
-    public void onMapReady(GoogleMap map) {
-        googleMap = map;
+    public void onMapReady(@NonNull GoogleMap googleMap) {
 
     }
 }
+
